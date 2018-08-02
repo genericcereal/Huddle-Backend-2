@@ -1,8 +1,2 @@
-.DS_Store
-.idea
-
-.env
-node_modules/
-
-.monitor
-Makefile
+.gitignore
+node_modules

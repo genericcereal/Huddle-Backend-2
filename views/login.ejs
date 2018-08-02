@@ -1,0 +1,21 @@
+<%- include partials/header %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 offset-md-4" id="loginBox">
+				<div class="acocunt-wall">
+					<form class="form-signin" action='/login' method='post'>
+						<input type='text' name='username' class='form-control' placeholder='email' required autofocus />
+						<input type='password' name='password' class='form-control' placeholder='Password' required />
+						<input type='checkbox' name='remember' placeholder='remember me'>Remember Me</input>
+						<button class="btn btn-lg btn-primary btn-block">Sign In</button>
+						<span class="clearfix"></span>
+						<a href="/join" class="text-center new-account">Create an account</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<br />
+	<%- include partials/footer %>
