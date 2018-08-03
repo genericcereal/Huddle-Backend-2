@@ -29,7 +29,16 @@ a {
     object-fit: cover;
 }
 
+.table {}
 
+.table-header {
+  background-color: #EEE;
+  border: 1px solid #DDD;
+}
+
+.table-row {
+  border: 1px solid #DDD;
+}
 /* Brands slider */
 /* Slider */
 .slick-slide {

@@ -1,10 +1,16 @@
 <%- include partials/header %>
-<div class="container-fluid">
-	<div class="container" style="min-height:10em;">
-	<p>account</p>
-	</div>
-	</div>
+	<div class="container-fluid">
+		<div class="container" style="min-height:10em;">
+			<p>Hello
+				<%-userData[0].id %>
+			</p>
+			<div class="table">
+				<div class="table-header">hi</div>
+				<div class="table-row">hi</div>
+			</div>
+			<a href='/create' class="btn btn-primary">Create new</a>
+		</div>
 
 
-<br />
-<%- include partials/footer %>
+		<br />
+		<%- include partials/footer %>

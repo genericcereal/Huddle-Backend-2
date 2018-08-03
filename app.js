@@ -37,4 +37,5 @@ app.set('view options', { layout: false });
 require('./lib/routes.js')(app);
 
 app.listen(PORT);
+console.log(process.env.DATABASE_URL);
 console.log('Node listening on port %s', PORT);
