@@ -25,8 +25,8 @@
 		<br />
 		<script>
 			/*
-																																								Function to carry out the actual PUT request to S3 using the signed request from the app.
-																																							*/
+																																														Function to carry out the actual PUT request to S3 using the signed request from the app.
+																																													*/
 			function uploadFile(file, signedRequest, url) {
 				const xhr = new XMLHttpRequest();
 
@@ -59,10 +59,10 @@
 						console.log(xhr.responseText);
 						uploadFile(file, response.signedRequest, response.url);
 						console.log("donegetSign");
-						else {
-							alert('Could not get signed URL.');
-						}
+					} else {
+						alert('Could not get signed URL.');
 					}
+
 				};
 				xhr.send();
 			}
