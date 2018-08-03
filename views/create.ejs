@@ -25,8 +25,8 @@
 		<br />
 		<script>
 			/*
-																																		Function to carry out the actual PUT request to S3 using the signed request from the app.
-																																	*/
+																																								Function to carry out the actual PUT request to S3 using the signed request from the app.
+																																							*/
 			function uploadFile(file, signedRequest, url) {
 				const xhr = new XMLHttpRequest();
 
@@ -53,13 +53,13 @@
 				const xhr = new XMLHttpRequest();
 				xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
 				xhr.onreadystatechange = () => {
-					if (xhr.readyState === 4) {
-						if (xhr.status === 200) {
-							const response = JSON.parse(xhr.responseText);
-							console.log(response);
-							uploadFile(file, response.signedRequest, response.url);
-							console.log("donegetSign");
-						} else {
+					if (xhr.readyState === 4 && xhr.status === 200) {
+
+						const response = JSON.parse(xhr.responseText);
+						console.log(xhr.responseText);
+						uploadFile(file, response.signedRequest, response.url);
+						console.log("donegetSign");
+						else {
 							alert('Could not get signed URL.');
 						}
 					}
