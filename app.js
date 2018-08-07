@@ -3,7 +3,8 @@
 var express = require('express');
 require('dotenv').config();
 const PORT = process.env.PORT || 5000
-
+var cors = require('cors');
+var app = express();
 var flash = require('connect-flash');
 
 var passport = require("passport");
@@ -30,6 +31,7 @@ app.use('/public', express.static(__dirname + '/public'));
 app.use(flash());
 app.use(session({secret: 'keyboard cat'}))
 app.use(bodyParser());
+app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.set('view options', { layout: false });
 

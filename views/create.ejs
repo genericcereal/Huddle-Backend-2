@@ -6,11 +6,19 @@
 			</p>
 			<div class="table">
 				<div class="table-header">hi</div>
-				<input type="file" id="file-input">
-				<p id="status">Please select a file</p>
-				<img style="border:1px solid gray;width:300px;" id="preview" src="../public/images/default.png">
-				<input type="hidden" id="avatar-url" name="avatar-url" value="../public/images/default.png">
-				<form action='/create' method='POST' class='form-signin'>
+
+
+				<form method="post" action="/upload" id="Image-Dropzone" class='dropzone'>
+
+
+
+
+
+
+				</form>
+
+
+				<form action='/create' method='POST'>
 
 					<input type='text' name='eventName' class='form-control' placeholder='Event Name' autofocus />
 					<input type='text' name='eventDate' class='form-control' placeholder='Event Date' />
@@ -20,69 +28,10 @@
 
 			</div>
 		</div>
+	</div>
 
 
-		<br />
-		<script>
-			/*
-																																																																Function to carry out the actual PUT request to S3 using the signed request from the app.
-																																																															*/
-			function uploadFile(file, signedRequest, url) {
-				const xhr = new XMLHttpRequest();
+	<br />
 
-				xhr.open('PUT', signedRequest);
-				xhr.onreadystatechange = () => {
-					if (xhr.readyState === 4) {
-						if (xhr.status === 200) {
-							document.getElementById('preview').src = url;
-							document.getElementById('avatar-url').value = url;
-							console.log("worked?");
-						} else {
-							alert('Could not upload file.');
-						}
-					}
-				};
-				xhr.send(file);
-			}
-			/*
-				Function to get the temporary signed request from the app.
-				If request successful, continue to upload the file using this signed
-				request.
-			*/
-			function getSignedRequest(file) {
-				const xhr = new XMLHttpRequest();
 
-				xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
-				xhr.onreadystatechange = () => {
-					if (xhr.readyState === 4) {
-						if (xhr.status === 200) {
-							const response = JSON.parse(xhr.responseText);
-							uploadFile(file, response.signedRequest, response.url);
-						} else {
-							alert('Could not get signed URL.');
-						}
-					}
-				};
-				xhr.send();
-			}
-			/*
-			 Function called when file input updated. If there is a file selected, then
-			 start upload procedure by asking for a signed request from the app.
-			*/
-			function initUpload() {
-				const files = document.getElementById('file-input').files;
-				const file = files[0];
-				if (file == null) {
-					return alert('No file selected.');
-				}
-				getSignedRequest(file);
-				console.log("doneInitUpload");
-			}
-			/*
-			 Bind listeners when the page loads.
-			*/
-			(() => {
-				document.getElementById('file-input').onchange = initUpload;
-			})();
-		</script>
-		<%- include partials/footer %>
+	<%- include partials/footer %>
